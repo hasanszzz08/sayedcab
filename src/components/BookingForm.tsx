@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Vehicle, VEHICLES } from '@/data/vehicles';
 import { BookingPayload, formatWhatsAppMessage } from '@/utils/whatsapp';
+import { WHATSAPP_INTERNATIONAL } from '@/config/business';
 import { BookingSummary } from './BookingSummary';
 import { WhatsAppButton } from './WhatsAppButton';
 
@@ -22,15 +23,17 @@ export const BookingForm: React.FC<BookingFormProps> = ({
   const [dropLocation, setDropLocation] = useState('');
   const [travelDate, setTravelDate] = useState('');
   const [travelTime, setTravelTime] = useState('');
+  const [tripType, setTripType] = useState('Outstation / Sightseeing');
   const [notes, setNotes] = useState('');
 
   // Step state: 'form' | 'review'
   const [step, setStep] = useState<'form' | 'review'>('form');
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [copied, setCopied] = useState(false);
 
-  // WhatsApp business number from environment or configurable placeholder
+  // WhatsApp business number from environment or verified config
   const businessWhatsAppNumber =
-    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210';
+    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || WHATSAPP_INTERNATIONAL;
 
   useEffect(() => {
     if (initialVehicle) {
@@ -90,15 +93,21 @@ export const BookingForm: React.FC<BookingFormProps> = ({
     customerName,
     customerPhone,
     vehicleName: currentVehicle ? currentVehicle.name : 'Not Specified',
+    tripType,
     pickupLocation,
     dropLocation,
     travelDate,
     travelTime,
-    estimatedFare: currentVehicle?.pricePerDay ? currentVehicle.pricePerDay : undefined,
     notes: notes.trim() ? notes : undefined
   };
 
   const whatsappMessage = formatWhatsAppMessage(payload);
+
+  const handleCopyDetails = () => {
+    navigator.clipboard.writeText(whatsappMessage);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 3000);
+  };
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
@@ -124,22 +133,41 @@ export const BookingForm: React.FC<BookingFormProps> = ({
         <div className="p-6 overflow-y-auto space-y-5">
           {step === 'form' ? (
             <form onSubmit={handleProceedToReview} className="space-y-4">
-              {/* Vehicle Selection */}
-              <div>
-                <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
-                  Select Vehicle *
-                </label>
-                <select
-                  value={selectedVehicleId}
-                  onChange={(e) => setSelectedVehicleId(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none bg-gray-50"
-                >
-                  {VEHICLES.map((v) => (
-                    <option key={v.id} value={v.id}>
-                      {v.name} ({v.seatingCapacity} Seater - {v.category})
-                    </option>
-                  ))}
-                </select>
+              {/* Vehicle & Trip Type Selection */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                    Select Vehicle *
+                  </label>
+                  <select
+                    value={selectedVehicleId}
+                    onChange={(e) => setSelectedVehicleId(e.target.value)}
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none bg-gray-50"
+                  >
+                    {VEHICLES.map((v) => (
+                      <option key={v.id} value={v.id}>
+                        {v.name} ({v.seatingCapacity} Seater)
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                    Trip Type
+                  </label>
+                  <select
+                    value={tripType}
+                    onChange={(e) => setTripType(e.target.value)}
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none bg-gray-50"
+                  >
+                    <option value="Outstation Tour">Outstation Tour</option>
+                    <option value="City Sightseeing">City Sightseeing</option>
+                    <option value="Airport / Station Transfer">Airport / Station Transfer</option>
+                    <option value="Round Trip">Round Trip</option>
+                    <option value="One Way Drop">One Way Drop</option>
+                  </select>
+                </div>
               </div>
 
               {/* Pickup & Destination */}
@@ -167,7 +195,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
 
                 <div>
                   <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
-                    Destination *
+                    Drop Location *
                   </label>
                   <input
                     type="text"
@@ -191,7 +219,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
-                    Travel Date *
+                    Pickup Date *
                   </label>
                   <input
                     type="date"
@@ -255,7 +283,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
 
                 <div>
                   <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
-                    WhatsApp / Mobile No *
+                    Phone Number *
                   </label>
                   <input
                     type="tel"
@@ -278,7 +306,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
               {/* Optional Notes */}
               <div>
                 <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
-                  Additional Notes (Optional)
+                  Additional Requirements (Optional)
                 </label>
                 <textarea
                   rows={2}
@@ -292,9 +320,9 @@ export const BookingForm: React.FC<BookingFormProps> = ({
               {/* Submit to review */}
               <button
                 type="submit"
-                className="w-full py-3.5 px-4 rounded-2xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-sm shadow-md transition active:scale-98"
+                className="w-full py-3.5 px-4 rounded-2xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-sm shadow-md transition active:scale-98 cursor-pointer"
               >
-                Review & Proceed to WhatsApp →
+                Review Booking Details →
               </button>
             </form>
           ) : (
@@ -308,13 +336,25 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                 message={whatsappMessage}
               />
 
+              {/* Fallback copy details */}
+              <div className="flex items-center justify-between text-xs text-gray-500 px-1">
+                <span>WhatsApp not opening automatically?</span>
+                <button
+                  type="button"
+                  onClick={handleCopyDetails}
+                  className="text-amber-700 hover:text-amber-800 font-bold underline"
+                >
+                  {copied ? '✓ Details Copied!' : 'Copy Booking Message'}
+                </button>
+              </div>
+
               {/* Mandatory Clarification Notice */}
               <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs text-gray-600 space-y-1">
                 <div className="flex items-center gap-1.5 font-bold text-gray-800">
                   <span>ℹ️</span> Important Notice:
                 </div>
                 <p>
-                  Opening WhatsApp does not automatically confirm your ride. Once WhatsApp opens, please <strong>manually press Send</strong>. Our team will verify vehicle availability and confirm your booking with the final quote.
+                  Clicking the button opens WhatsApp with your prefilled booking request. Please <strong>manually press Send</strong> in WhatsApp. Our team will verify vehicle availability and confirm your booking with the final quote.
                 </p>
               </div>
 

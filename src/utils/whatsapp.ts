@@ -1,38 +1,45 @@
 export interface BookingPayload {
   customerName: string;
   customerPhone: string;
-  vehicleName: string;
   pickupLocation: string;
   dropLocation: string;
   travelDate: string;
   travelTime: string;
-  estimatedFare?: string | number;
+  vehicleName?: string;
+  tripType?: string;
   notes?: string;
 }
 
 export const formatWhatsAppMessage = (data: BookingPayload): string => {
   const lines: string[] = [
-    '👋 *NAMASTE! NEW CAR BOOKING ENQUIRY*',
-    '--------------------------------------',
-    `👤 *Customer Name:* ${data.customerName.trim()}`,
-    `📞 *Contact Number:* ${data.customerPhone.trim()}`,
-    `🚗 *Selected Car:* ${data.vehicleName.trim()}`,
-    `📍 *Pickup Location:* ${data.pickupLocation.trim()}`,
-    `🏁 *Destination:* ${data.dropLocation.trim()}`,
-    `📅 *Travel Date:* ${data.travelDate.trim()}`,
-    `⏰ *Travel Time:* ${data.travelTime.trim()}`,
+    'Hello Sayed Cab!',
+    '',
+    'I would like to book a cab. Here are my booking details:',
+    '',
+    `Name: ${data.customerName.trim()}`,
+    `Phone Number: ${data.customerPhone.trim()}`,
+    `Pickup Location: ${data.pickupLocation.trim()}`,
+    `Drop Location: ${data.dropLocation.trim()}`,
+    `Pickup Date: ${data.travelDate.trim()}`,
+    `Pickup Time: ${data.travelTime.trim()}`,
   ];
 
-  if (data.estimatedFare) {
-    lines.push(`💰 *Estimated Fare:* ₹${data.estimatedFare}`);
+  if (data.vehicleName && data.vehicleName.trim()) {
+    lines.push(`Car Preference: ${data.vehicleName.trim()}`);
+  }
+
+  if (data.tripType && data.tripType.trim()) {
+    lines.push(`Trip Type: ${data.tripType.trim()}`);
   }
 
   if (data.notes && data.notes.trim()) {
-    lines.push(`📝 *Additional Notes:* ${data.notes.trim()}`);
+    lines.push(`Additional Requirements: ${data.notes.trim()}`);
   }
 
-  lines.push('--------------------------------------');
-  lines.push('ℹ️ *Request submitted via website. Please confirm availability & final quote.*');
+  lines.push('');
+  lines.push('Please confirm the availability and booking details.');
+  lines.push('');
+  lines.push('Thank you!');
 
   return lines.join('\n');
 };

@@ -12,13 +12,13 @@ export const CarCard: React.FC<CarCardProps> = ({ vehicle, onBookNow }) => {
   return (
     <div className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col overflow-hidden group">
       {/* Photo Area */}
-      <div className="relative w-full overflow-hidden bg-gray-50">
+      <div className="relative w-full overflow-hidden bg-slate-100">
         {vehicle.hasActualPhoto && vehicle.imageSrc ? (
-          <div className="relative h-52 w-full overflow-hidden">
+          <div className="relative h-56 w-full overflow-hidden bg-slate-50 flex items-center justify-center">
             {/* Real photo tag */}
             <img
               src={vehicle.imageSrc}
-              alt={vehicle.name}
+              alt={`SAYEDCAB ${vehicle.name} rental in Rajasthan`}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               loading="lazy"
             />
@@ -27,7 +27,7 @@ export const CarCard: React.FC<CarCardProps> = ({ vehicle, onBookNow }) => {
             </span>
           </div>
         ) : (
-          <ImagePlaceholder vehicleName={vehicle.name} category={vehicle.category} heightClass="h-52" />
+          <ImagePlaceholder vehicleName={vehicle.name} category={vehicle.category} heightClass="h-56" />
         )}
 
         <span className="absolute top-3 right-3 px-2.5 py-1 text-xs font-medium bg-gray-900/80 backdrop-blur-sm text-white rounded-full">

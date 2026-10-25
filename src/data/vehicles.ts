@@ -17,7 +17,7 @@ export interface Vehicle {
   suitableFor?: string;
 }
 
-// Configurable placeholder inventory. Replace these entries with your actual fleet!
+// Real fleet inventory updated with client car assets
 export const VEHICLES: Vehicle[] = [
   {
     id: 'veh-1',
@@ -29,8 +29,8 @@ export const VEHICLES: Vehicle[] = [
     fuelType: 'Diesel',
     ac: true,
     luggageCapacity: 4,
-    hasActualPhoto: false, // Set to true once you add your photo in public/car-images/
-    imageSrc: '', // e.g. '/car-images/innova-crysta.jpg'
+    hasActualPhoto: true,
+    imageSrc: '/car-images/innova-crysta.png',
     featured: true,
     description: 'Spacious and comfortable MPV, ideal for family tours across Jaipur, Jodhpur, and Udaipur.',
     suitableFor: 'Rajasthan sightseeing, outstation trips, family tours'
@@ -45,8 +45,8 @@ export const VEHICLES: Vehicle[] = [
     fuelType: 'Diesel',
     ac: true,
     luggageCapacity: 3,
-    hasActualPhoto: false,
-    imageSrc: '',
+    hasActualPhoto: true,
+    imageSrc: '/car-images/ertiga.jpg',
     featured: true,
     description: 'Economical and reliable 6-seater option for inter-city travel and city sightseeing.',
     suitableFor: 'Budget family tours, airport transfers'
@@ -61,8 +61,8 @@ export const VEHICLES: Vehicle[] = [
     fuelType: 'Diesel',
     ac: true,
     luggageCapacity: 2,
-    hasActualPhoto: false,
-    imageSrc: '',
+    hasActualPhoto: true,
+    imageSrc: '/car-images/dzire.png',
     featured: true,
     description: 'Comfortable air-conditioned sedan suitable for couples and small families.',
     suitableFor: 'Local city tours, airport and railway station pick & drop'
@@ -77,8 +77,8 @@ export const VEHICLES: Vehicle[] = [
     fuelType: 'Diesel',
     ac: true,
     luggageCapacity: 4,
-    hasActualPhoto: false,
-    imageSrc: '',
+    hasActualPhoto: true,
+    imageSrc: '/car-images/fortuner.png',
     featured: true,
     description: 'High-end luxury SUV providing maximum comfort for desert safaris and VIP travel.',
     suitableFor: 'Desert trails, luxury weddings, royal tours'
@@ -93,11 +93,27 @@ export const VEHICLES: Vehicle[] = [
     fuelType: 'Diesel',
     ac: true,
     luggageCapacity: 8,
-    hasActualPhoto: false,
-    imageSrc: '',
-    featured: false,
+    hasActualPhoto: true,
+    imageSrc: '/car-images/tempo-traveller.png',
+    featured: true,
     description: 'Spacious group coach with push-back seats and dedicated luggage compartment.',
     suitableFor: 'Large group packages, wedding guest transit, corporate trips'
+  },
+  {
+    id: 'veh-6',
+    slug: 'force-urbania-luxury',
+    name: 'Force Urbania Luxury',
+    category: 'Luxury Van',
+    seatingCapacity: 13,
+    transmission: 'Manual',
+    fuelType: 'Diesel',
+    ac: true,
+    luggageCapacity: 10,
+    hasActualPhoto: true,
+    imageSrc: '/car-images/urbania.png',
+    featured: true,
+    description: 'Next-generation luxury traveller with panoramic windows, plush reclining seats and individual AC vents.',
+    suitableFor: 'VIP delegates, luxury group tours, destination weddings'
   }
 ];
 

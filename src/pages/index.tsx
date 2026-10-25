@@ -55,15 +55,15 @@ export default function Home() {
         {/* Hero */}
         <Hero onOpenBooking={handleOpenGeneralBooking} />
 
-        {/* Featured Vehicle Fleet */}
-        <section className="py-16 md:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Featured Vehicle Fleet / Dedicated Car Gallery */}
+        <section id="fleet" className="py-16 md:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-amber-600 bg-amber-50 px-3 py-1 rounded-full">
                 Well-Maintained Fleet
               </span>
               <h2 className="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mt-2">
-                Choose Your Royal Ride
+                Sayed Cab Royal Car & Bus Fleet
               </h2>
               <p className="text-sm text-gray-500 mt-1 max-w-xl">
                 Every vehicle comes thoroughly sanitized, fully air-conditioned, and driven by licensed, courteous local drivers.
@@ -74,7 +74,7 @@ export default function Home() {
               href="/cars"
               className="inline-flex items-center gap-1.5 text-sm font-bold text-amber-600 hover:text-amber-700 hover:underline"
             >
-              <span>View All Vehicles ({VEHICLES.length})</span>
+              <span>View All Fleet ({VEHICLES.length})</span>
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
@@ -90,6 +90,40 @@ export default function Home() {
                 onBookNow={handleBookVehicle}
               />
             ))}
+          </div>
+
+          {/* Group Tour Experience Highlight Gallery banner */}
+          <div className="mt-12 bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden grid grid-cols-1 md:grid-cols-12 gap-0 items-center">
+            <div className="md:col-span-5 h-64 md:h-full min-h-[220px] relative">
+              <img
+                src="/car-images/tour-bus-group.jpg"
+                alt="Sayed Cab group tour travelers in Rajasthan"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+              <span className="absolute bottom-3 left-3 px-3 py-1 bg-black/70 backdrop-blur-md text-white text-xs font-semibold rounded-full">
+                📸 Real Group Tour in Rajasthan
+              </span>
+            </div>
+            <div className="md:col-span-7 p-6 sm:p-8 space-y-3">
+              <span className="text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-100/70 px-3 py-1 rounded-full">
+                Group Tours & Corporate Outings
+              </span>
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
+                Planning a Group Tour, Wedding Transit or Desert Safari?
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                From luxury AC coaches and tempo travellers to spacious Innovas, we accommodate group travels of all sizes with punctuality and royal Rajasthani hospitality.
+              </p>
+              <div className="pt-2">
+                <button
+                  onClick={handleOpenGeneralBooking}
+                  className="px-6 py-3 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs sm:text-sm shadow-sm transition"
+                >
+                  Enquire for Group Booking on WhatsApp →
+                </button>
+              </div>
+            </div>
           </div>
         </section>
 

@@ -1,4 +1,5 @@
 export const BUSINESS_NAME = 'SAYEDCAB';
+export const PRIMARY_PHONE = '9079780740';
 export const PHONE_NUMBERS = ['9079780740', '8290525054', '8949528450'];
 export const EMAIL = 'sayedcab@gmail.com';
 // WhatsApp number in local format (without country code) for display/validation
