@@ -92,35 +92,71 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Group Tour Experience Highlight Gallery banner */}
-          <div className="mt-12 bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden grid grid-cols-1 md:grid-cols-12 gap-0 items-center">
-            <div className="md:col-span-5 h-64 md:h-full min-h-[220px] relative">
-              <img
-                src="/car-images/tour-bus-group.jpg"
-                alt="Sayed Cab group tour travelers in Rajasthan"
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-              <span className="absolute bottom-3 left-3 px-3 py-1 bg-black/70 backdrop-blur-md text-white text-xs font-semibold rounded-full">
-                📸 Real Group Tour in Rajasthan
-              </span>
+          {/* Group Tour & Airport Dropping Experience Highlight Gallery banner */}
+          <div className="mt-12 bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
+            {/* Gallery Images Comparison / Showcase */}
+            <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-2 p-3 bg-slate-900/5">
+              <div className="relative h-60 sm:h-full min-h-[220px] rounded-2xl overflow-hidden shadow-sm group">
+                <img
+                  src="/car-images/tourist-group-night.jpg"
+                  alt="Complete Rajasthan tour & airport dropping tourist group with Sayed Cab coach"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <span className="absolute bottom-2.5 left-2.5 right-2.5 px-3 py-1.5 bg-black/75 backdrop-blur-md text-white text-[11px] font-semibold rounded-xl text-center">
+                  ✈️ Complete Rajasthan Tour & Airport Dropping
+                </span>
+              </div>
+              <div className="relative h-60 sm:h-full min-h-[220px] rounded-2xl overflow-hidden shadow-sm group">
+                <img
+                  src="/car-images/tour-bus-group.jpg"
+                  alt="Desert road tourist group tour in Rajasthan"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <span className="absolute bottom-2.5 left-2.5 right-2.5 px-3 py-1.5 bg-black/75 backdrop-blur-md text-white text-[11px] font-semibold rounded-xl text-center">
+                  🏜️ Desert Safari & Inter-City Sightseeing
+                </span>
+              </div>
             </div>
-            <div className="md:col-span-7 p-6 sm:p-8 space-y-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-100/70 px-3 py-1 rounded-full">
-                Group Tours & Corporate Outings
+
+            {/* Description & WhatsApp Action */}
+            <div className="lg:col-span-6 p-6 sm:p-8 flex flex-col justify-center space-y-3.5">
+              <span className="text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-100/70 px-3 py-1 rounded-full w-fit">
+                Tourist Group Service & Airport Transfers
               </span>
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
-                Planning a Group Tour, Wedding Transit or Desert Safari?
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 leading-tight">
+                Complete Rajasthan Tours & Punctual Airport Dropping / Pickups
               </h3>
               <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                From luxury AC coaches and tempo travellers to spacious Innovas, we accommodate group travels of all sizes with punctuality and royal Rajasthani hospitality.
+                Whether you need a full multi-day Rajasthan family tour, corporate group journey, or guaranteed on-time airport dropping & railway station pick-and-drop, we have dedicated tourist coaches, tempo travellers, and luxury cabs ready.
               </p>
+
+              <div className="grid grid-cols-2 gap-2.5 pt-1 text-xs text-gray-700 font-medium">
+                <div className="flex items-center gap-2">
+                  <span className="text-emerald-600 font-bold">✓</span>
+                  <span>Complete Rajasthan Circuit</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-emerald-600 font-bold">✓</span>
+                  <span>On-Time Airport Dropping</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-emerald-600 font-bold">✓</span>
+                  <span>Luggage Assistance</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-emerald-600 font-bold">✓</span>
+                  <span>24/7 WhatsApp Support</span>
+                </div>
+              </div>
+
               <div className="pt-2">
                 <button
                   onClick={handleOpenGeneralBooking}
-                  className="px-6 py-3 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs sm:text-sm shadow-sm transition"
+                  className="w-full sm:w-auto px-6 py-3 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs sm:text-sm shadow-sm transition"
                 >
-                  Enquire for Group Booking on WhatsApp →
+                  Book Complete Tour / Airport Drop on WhatsApp →
                 </button>
               </div>
             </div>
