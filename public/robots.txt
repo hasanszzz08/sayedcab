@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://sayedcab.vercel.app
+
+# Sitemaps
+Sitemap: https://sayedcab.vercel.app/sitemap.xml

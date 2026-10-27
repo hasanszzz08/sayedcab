@@ -25,18 +25,25 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans text-gray-900">
       <Head>
-        <title>SAYEDCAB – Reliable Car Rental & Tour Packages in Rajasthan</title>
+        <title>SAYEDCAB – Car Rental in Rajasthan | Cabs, SUVs & Tempo Travellers</title>
         <meta
           name="description"
-          content="SAYEDCAB provides premium car rentals, SUVs, and tempo travellers across Rajasthan. Book instantly via WhatsApp with transparent pricing and experienced chauffeurs." />
+          content="Book reliable car rental in Rajasthan with SAYEDCAB. Clean AC cabs, luxury SUVs, and tempo travellers for Jaipur, Udaipur, Jodhpur & Jaisalmer tours with local chauffeurs."
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <link rel="canonical" href="https://sayedcab.vercel.app/" />
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="SAYEDCAB – Car Rental in Rajasthan | Cabs, SUVs & Tempo Travellers" />
+        <meta property="og:description" content="Book reliable car rental in Rajasthan with SAYEDCAB. Clean AC cabs, luxury SUVs, and tempo travellers with experienced chauffeurs." />
+        <meta property="og:url" content="https://sayedcab.vercel.app/" />
+        <meta property="og:type" content="website" />
         {/* Structured Data: Organization */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
           "name": "SAYEDCAB",
-          "url": "http://localhost:3000",
-          "logo": "/logo.png",
+          "url": "https://sayedcab.vercel.app",
+          "logo": "https://sayedcab.vercel.app/logo.png",
           "contactPoint": [{
             "@type": "ContactPoint",
             "telephone": "+91-9079780740",
