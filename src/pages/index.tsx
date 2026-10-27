@@ -28,7 +28,7 @@ export default function Home() {
         <title>SAYEDCAB | Car Rental & Taxi Service in Rajasthan</title>
         <meta
           name="description"
-          content="Book reliable car rental in Rajasthan with SAYEDCAB. Clean AC cabs, luxury SUVs, and tempo travellers for Jaipur, Udaipur, Jodhpur & Jaisalmer tours with local chauffeurs."
+          content="Book reliable and affordable car rental and taxi services with SAYEDCAB across Rajasthan, including Jaipur, Jaisalmer, Udaipur, and Jodhpur. Clean AC cabs, luxury SUVs, and tempo travellers available. Contact us on WhatsApp."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <link rel="canonical" href="https://sayedcab.vercel.app/" />
