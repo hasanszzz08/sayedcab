@@ -32,6 +32,13 @@ export default function CarDetailPage({ vehicle }: CarDetailPageProps) {
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans text-gray-900">
       <Head>
         <title>{`${vehicle.name} Rental in Rajasthan | With Chauffeur`}</title>
+        <meta name="description" content={`Hire ${vehicle.name} (${vehicle.seatingCapacity} seater, AC) for sightseeing and outstation trips in Rajasthan. Book instantly on WhatsApp.`} />
+        <link rel="canonical" href={`https://sayedcab.vercel.app/cars/${vehicle.slug || vehicle.id}`} />
+        <meta property="og:title" content={`${vehicle.name} Rental in Rajasthan | With Chauffeur`} />
+        <meta property="og:description" content={`Hire ${vehicle.name} (${vehicle.seatingCapacity} seater, AC) for sightseeing and outstation trips in Rajasthan. Book instantly on WhatsApp.`} />
+        <meta property="og:url" content={`https://sayedcab.vercel.app/cars/${vehicle.slug || vehicle.id}`} />
+        <meta name="robots" content="index, follow" />
+        <title>{`${vehicle.name} Rental in Rajasthan | With Chauffeur`}</title>
         <meta
           name="description"
           content={`Hire ${vehicle.name} (${vehicle.seatingCapacity} seater, AC) for sightseeing and outstation trips in Rajasthan. Book instantly on WhatsApp.`}

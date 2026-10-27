@@ -32,6 +32,13 @@ export default function CarsPage() {
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans text-gray-900">
       <Head>
         <title>Our Vehicle Fleet | Rajasthan Car Rental</title>
+        <meta name="description" content="Explore our fleet of sedans, luxury SUVs, and tempo travellers for rent across Rajasthan with professional chauffeurs." />
+        <link rel="canonical" href="https://sayedcab.vercel.app/cars" />
+        <meta property="og:title" content="Our Vehicle Fleet | Rajasthan Car Rental" />
+        <meta property="og:description" content="Explore our fleet of sedans, luxury SUVs, and tempo travellers for rent across Rajasthan with professional chauffeurs." />
+        <meta property="og:url" content="https://sayedcab.vercel.app/cars" />
+        <meta name="robots" content="index, follow" />
+        <title>Our Vehicle Fleet | Rajasthan Car Rental</title>
         <meta
           name="description"
           content="Explore our fleet of sedans, luxury SUVs, and tempo travellers for rent across Rajasthan with professional chauffeurs."

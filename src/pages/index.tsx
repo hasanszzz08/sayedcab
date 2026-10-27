@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans text-gray-900">
       <Head>
-        <title>SAYEDCAB – Car Rental in Rajasthan | Cabs, SUVs & Tempo Travellers</title>
+        <title>SAYEDCAB | Car Rental & Taxi Service in Rajasthan</title>
         <meta
           name="description"
           content="Book reliable car rental in Rajasthan with SAYEDCAB. Clean AC cabs, luxury SUVs, and tempo travellers for Jaipur, Udaipur, Jodhpur & Jaisalmer tours with local chauffeurs."
